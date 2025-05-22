@@ -45,6 +45,6 @@ app.get('/bouquets', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Сервер запущен на порту ${port}`);
-});
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server running on port ${process.env.PORT || 3000}`);
+  });
