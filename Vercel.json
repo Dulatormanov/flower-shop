@@ -8,16 +8,8 @@
     ],
     "routes": [
       {
-        "src": "/flowers",
-        "dest": "server.js"
-      },
-      {
-        "src": "/bouquets",
-        "dest": "server.js"
-      },
-      {
         "src": "/(.*)",
-        "dest": "server.js"
+        "dest": "/server.js"
       }
     ]
   }
