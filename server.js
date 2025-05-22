@@ -17,12 +17,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/flowers', (req, res) => {
+app.get('/api/flowers', (req, res) => {
     console.log('Flowers endpoint called');
     res.json(flowersData);
 });
 
-app.get('/bouquets', (req, res) => {
+app.get('/api/bouquets', (req, res) => {
     console.log('Bouquets endpoint called');
     res.json(bouquetsData);
 });

@@ -73,13 +73,13 @@
          }
 
          // Загрузка и отображение цветов
-         fetch('/flowers')
+         fetch('/api/flowers')
             .then(response => response.json())
             .then(flowers => displayFlowers(flowers))
             .catch(error => console.error('Ошибка при загрузке цветов:', error));
 
          // Загрузка и отображение букетов
-         fetch('/bouquets')
+         fetch('/api/bouquets')
             .then(response => response.json())
             .then(bouquets => displayBouquets(bouquets))
             .catch(error => console.error('Ошибка при загрузке букетов:', error));
