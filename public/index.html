@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Цветочный магазин</title>
+   <!-- Стили CSS -->
+   <style>
+      body {
+         font-family: sans-serif;
+         margin: 0;
+         padding: 0;
+         color: #333;
+         line-height: 1.6;
+         background-color: #E6E6FA;
+      }
+
+      section {
+         padding: 60px 20px;
+         text-align: center;
+         max-width: 1200px;
+         margin: 0 auto;
+         background-color: rgba(255, 255, 255, 0.7);
+         border-radius: 10px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+         font-size: 2.5rem;
+         margin-bottom: 30px;
+         color: #673AB7;
+         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      p {
+         font-size: 1.2rem;
+         color: #555;
+         margin-bottom: 20px;
+      }
+
+      header {
+         background-color: rgba(0, 0, 0, 0.1);
+         color: #673AB7;
+         padding: 1rem 0;
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+         position: sticky;
+         top: 0;
+         z-index: 100;
+      }
+
+      nav {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 0 20px;
+         max-width: 1200px;
+         margin: 0 auto;
+      }
+
+      nav .logo {
+         font-size: 2rem;
+         font-weight: bold;
+         color: #673AB7;
+      }
+
+      nav ul {
+         list-style: none;
+         display: flex;
+         margin: 0;
+         padding: 0;
+      }
+
+      nav ul li {
+         margin-left: 20px;
+      }
+
+      nav ul li a {
+         color: #673AB7;
+         text-decoration: none;
+         font-size: 1.2rem;
+         transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+         color: #957DAD;
+      }
+
+      /* Стили для секции Hero с видео */
+      #hero {
+         position: relative;
+         overflow: hidden;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         padding: 80px 20px;
+         border-radius: 10px;
+         color: white;
+         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+         text-align: center;
+      }
+
+      .hero-video {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         z-index: 0;
+      }
+
+      #hero .hero-content {
+         position: relative;
+         z-index: 1;
+         width: 100%;
+         max-width: 800px;
+         margin: 0 auto;
+         background-color: rgba(0, 0, 0, 0.3);
+         /* Полупрозрачный фон для лучшей читаемости */
+         padding: 20px;
+         /* Добавляем отступы */
+         border-radius: 10px;
+         /* Скругление углов */
+      }
+
+      #hero h1 {
+         font-size: 3rem;
+         margin-bottom: 20px;
+         color: white;
+         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .button {
+         display: inline-block;
+         background-color: #673AB7;
+         color: #FFFFFF;
+         padding: 12px 24px;
+         text-decoration: none;
+         border-radius: 5px;
+         transition: background-color 0.3s ease, color 0.3s ease;
+         font-size: 1.2rem;
+      }
+
+      .button:hover {
+         background-color: #957DAD;
+      }
+
+      #featured {
+         padding: 60px 20px;
+         text-align: center;
+         max-width: 1200px;
+         margin: 0 auto;
+         background-color: rgba(255, 255, 255, 0.7);
+         border-radius: 10px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #featured .featured-items {
+         display: flex;
+         overflow-x: auto;
+         scroll-snap-type: x mandatory;
+         padding-bottom: 20px;
+         margin-left: 20px;
+         margin-right: 20px;
+      }
+
+      #featured .item {
+         width: 300px;
+         flex-shrink: 0;
+         margin: 20px;
+         padding: 20px;
+         background-color: rgba(255, 255, 255, 0.8);
+         border-radius: 10px;
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+         text-align: center;
+         scroll-snap-align: start;
+         flex-direction: column;
+      }
+
+      #featured .item a {
+         text-decoration: none;
+         color: inherit;
+         display: block;
+      }
+
+      #featured .item:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      #featured .item img {
+         max-width: 100%;
+         height: 200px;
+         /* Увеличьте высоту изображения */
+         object-fit: cover;
+         /* Важно для сохранения пропорций изображения */
+         border-radius: 10px;
+         margin-bottom: 15px;
+      }
+
+      #featured .item h3 {
+         font-size: 1.5rem;
+         margin-bottom: 10px;
+         color: #444;
+      }
+
+      #featured .item p {
+         font-size: 1rem;
+         color: #666;
+         margin-bottom: 10px;
+         /* Добавьте отступ снизу для лучшей читаемости */
+      }
+
+      .buy-button {
+         display: inline-block;
+         background-color: #673AB7;
+         color: #FFFFFF;
+         padding: 10px 15px;
+         text-decoration: none;
+         border-radius: 5px;
+         transition: background-color 0.3s ease, color 0.3s ease;
+         font-size: 1rem;
+         margin-top: auto;
+         /* Прижимаем кнопку к низу элемента */
+      }
+
+      .buy-button:hover {
+         background-color: #957DAD;
+      }
+
+      footer {
+         background-color: rgba(0, 0, 0, 0.3);
+         color: #fff;
+         text-align: center;
+         padding: 20px 0;
+         font-size: 1rem;
+      }
+
+      /* Стили для секции "О нас" */
+      #about {
+         background-color: rgba(255, 255, 255, 0.4);
+         border-radius: 10px;
+         padding: 40px 20px;
+         text-align: center;
+      }
+
+      .about-container {
+         max-width: 1200px;
+         margin: 0 auto;
+      }
+
+      .about-content {
+         display: flex;
+         flex-wrap: wrap;
+         align-items: center;
+         justify-content: center;
+      }
+
+      .about-text {
+         flex: 1;
+         padding: 20px;
+         text-align: left;
+         min-width: 300px;
+      }
+
+      .about-text p {
+         font-size: 1.1rem;
+         line-height: 1.7;
+         margin-bottom: 15px;
+         color: #555;
+      }
+
+      .about-image {
+         flex: 1;
+         padding: 20px;
+         text-align: center;
+         min-width: 250px;
+      }
+
+      .about-image img {
+         max-width: 60%;
+         height: auto;
+         border-radius: 10px;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-image .image-caption {
+         font-size: 0.9rem;
+         color: #777;
+         margin-top: 10px;
+      }
+
+      /* ---- Стили для секции "Популярные букеты" ---- */
+      .popular-bouquets {
+         padding: 20px;
+         text-align: left;
+         /* Выравнивание текста влево */
+      }
+
+      .bouquets-container {
+         position: relative;
+         overflow: hidden;
+      }
+
+      .bouquets-list {
+         display: flex;
+         overflow-x: auto;
+         scroll-snap-type: x mandatory;
+         padding: 10px;
+         scroll-behavior: smooth;
+         scrollbar-width: none;
+         /* Убирает полосу прокрутки (в некоторых браузерах) */
+      }
+
+      .bouquets-list::-webkit-scrollbar {
+         display: none;
+         /* Убирает полосу прокрутки (для Chrome, Safari) */
+      }
+
+      .bouquet-item {
+         flex: 0 0 auto;
+         /* Не растягивать элементы, фиксированная ширина */
+         width: 200px;
+         height: 350px;
+         /* Увеличена высота для лучшей видимости */
+         margin-right: 20px;
+         /* Увеличели расстояние между элементами */
+         background-color: #f0f0f0;
+         border: 1px solid #ccc;
+         border-radius: 8px;
+         /* Скругление углов для букетов */
+         display: flex;
+         flex-direction: column;
+         /* Размещение элементов внутри вертикально */
+         justify-content: flex-start;
+         /* Выравнивание сверху */
+         align-items: center;
+         scroll-snap-align: start;
+         padding: 15px;
+         /* Добавлен отступ внутри каждого букета */
+         text-align: center;
+         /* Выравнивание текста по центру внутри букета */
+      }
+
+      .bouquet-item img {
+         max-width: 100%;
+         max-height: 180px;
+         /* Ограничение размера изображения */
+         margin-bottom: 10px;
+         border-radius: 6px;
+         /* Скругление углов для изображений */
+         object-fit: cover;
+         /* Масштабирование изображения без искажений */
+      }
+
+      .bouquet-item h3 {
+         font-size: 1.2rem;
+         margin-bottom: 5px;
+      }
+
+      .bouquet-item p {
+         font-size: 1rem;
+         color: #555;
+         margin-bottom: 10px;
+      }
+
+      .scroll-arrow {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         background-color: rgba(0, 0, 0, 0.5);
+         color: white;
+         border: none;
+         padding: 10px;
+         cursor: pointer;
+         z-index: 10;
+         font-size: 1.5rem;
+         border-radius: 50%;
+         /* Скругление для стрелок */
+         width: 40px;
+         /* Размер стрелок */
+         height: 40px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         transition: background-color 0.3s ease;
+         /* Плавная смена цвета */
+      }
+
+      .scroll-arrow:hover {
+         background-color: rgba(0, 0, 0, 0.7);
+         /* Более темный фон при наведении */
+      }
+
+      .scroll-arrow-left {
+         left: 5px;
+         /* Небольшой отступ слева */
+      }
+
+      .scroll-arrow-right {
+         right: 5px;
+         /* Небольшой отступ справа */
+      }
+   </style>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+   <header>
+      <nav>
+         <div class="logo">Desso_flowers</div>
+         <ul>
+            <li><a href="#hero">Главная</a></li>
+            <li><a href="#featured">Популярные букеты</a></li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+         </ul>
+      </nav>
+   </header>
+
+   <section id="hero">
+      <video autoplay loop muted playsinline class="hero-video">
+         <source src="images/-5015011062683492605.MP4" type="video/mp4">
+         <source src="images/-5015011062683492605.MP4" type="video/webm">
+         Ваш браузер не поддерживает видео.
+      </video>
+      <div class="hero-content">
+         <h1>Изысканные букеты для ваших ярких моментов</h1>
+         <a href="catalog.html" class="button">Смотреть каталог</a>
+      </div>
+   </section>
+
+   <section id="featured" class="popular-bouquets">
+      <!-- Added popular-bouquets class here-->
+      <h2>Популярные букеты</h2>
+      <div class="bouquets-container">
+         <button class="scroll-arrow scroll-arrow-left">&lt;</button>
+         <div class="bouquets-list">
+            <!-- Здесь ваши элементы букетов -->
+            <div class="bouquet-item">
+               <img src="images/IMG_5889.jpg" alt="Букет 1">
+               <h3>Пышные воздушные розовые пионы</h3>
+               <p>Описание букета.</p>
+               <a href="https://wa.me/77001234567?text=Я хочу заказать букет Пышные розовые пионы"
+                  class="buy-button">Купить</a>
+            </div>
+            <div class="bouquet-item">
+               <img src="images/IMG_5890.jpg" alt="Букет 2">
+               <h3>Воздушный букет с гортензиями</h3>
+               <p>Описание букета.</p>
+               <a href="https://wa.me/77001234567?text=Я хочу заказать букет Воздушный букет с гортензиями"
+                  class="buy-button">Купить</a>
+            </div>
+            <div class="bouquet-item">
+               <img src="images/IMG_5885.jpg" alt="Букет 3">
+               <h3>Сезонный смешанный букет</h3>
+               <p>Описание букета.</p>
+               <a href="https://wa.me/77001234567?text=Я хочу заказать букет Сезонный смешанный букет"
+                  class="buy-button">Купить</a>
+            </div>
+            <div class="bouquet-item">
+               <img src="images/IMG_5886.jpg" alt="Букет 4">
+               <h3>Многоцветный букет с гортензиями</h3>
+               <p>Описание букета.</p>
+               <a href="https://wa.me/77001234567?text=Я хочу заказать букет Многоцветный букет с гортензиями"
+                  class="buy-button">Купить</a>
+            </div>
+            <div class="bouquet-item">
+               <img src="images/IMG_5888.jpg" alt="Букет 5">
+               <h3>Нежный букет с розами</h3>
+               <p>Описание букета.</p>
+               <a href="https://wa.me/77001234567?text=Я хочу заказать букет Смешанный букет с пионами и пионовидными розами"
+                  class="buy-button">Купить</a>
+            </div>
+            <div class="bouquet-item">
+               <img src="images/IMG_5883.JPG" alt="Букет 6">
+               <h3>Нежный букет с тюльпанами</h3>
+               <p>Описание букета.</p>
+               <a href="https://wa.me/77001234567?text=Я хочу заказать букет Нежный букет с тюльпанами"
+                  class="buy-button">Купить</a>
+            </div>
+            <div class="bouquet-item">
+               <img src="images/IMG_5896 2.jpg" alt="Букет 7">
+               <h3>Полиантовые нежные розы</h3>
+               <p>Описание букета.</p>
+               <a href="https://wa.me/77001234567?text=Я хочу заказать букет Полиантовые розы"
+                  class="buy-button">Купить</a>
+            </div>
+            <div class="bouquet-item">
+               <img src="images/IMG_5891.jpg" alt="Букет 8">
+               <h3>Огромные полиантовые розы</h3>
+               <p>Описание букета.</p>
+               <a href="https://wa.me/77001234567?text=Я хочу заказать букет Огромные и шикарные полиантовые розы"
+                  class="buy-button">Купить</a>
+            </div>
+            <div class="bouquet-item">
+               <img src="images/IMG_5893.jpg" alt="Букет 9">
+               <h3>Роскошные розовые розы</h3>
+               <p>Описание букета.</p>
+               <a href="https://wa.me/77001234567?text=Я хочу заказать букет Роскошные розовые розы"
+                  class="buy-button">Купить</a>
+            </div>
+            <div class="bouquet-item">
+               <img src="images/IMG_5894.jpg" alt="Букет 10">
+               <h3>Нежный букет с розовыми лилиями</h3>
+               <p>Описание букета.</p>
+               <a href="https://wa.me/77001234567?text=Я хочу заказать букет Нежный букет с розовыми лилиями"
+                  class="buy-button">Купить</a>
+            </div>
+         </div>
+         <button class="scroll-arrow scroll-arrow-right">&gt;</button>
+      </div>
+   </section>
+
+   <section id="about">
+      <div class="about-container">
+         <h2>О нас</h2>
+         <div class="about-content">
+            <div class="about-text">
+               <p><b>Desso_flowers</b> — это магазин, где цветы говорят за вас. Мы создаём свежие и стильные букеты для
+                  любых поводов, с доставкой и заботой. Дарите эмоции — легко и красиво.</p>
+               <p>Владелица бренда — <b>Дамеля</b>, человек с тонким вкусом и большой любовью к цветам. Она лично следит
+                  за качеством и вдохновением каждого букета.</p>
+            </div>
+            <div class="about-image">
+               <img src="images/Дамеля.jpg" alt="Дамеля - основательница Desso_flowers">
+               <p class="image-caption">Дамеля — основательница Desso_flowers</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <footer>
+      <p>&copy; 2025 Desso_flowers</p>
+   </footer>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
+         const container = document.querySelector('.bouquets-container');
+         const scrollList = document.querySelector('.bouquets-list');
+         const arrowLeft = document.querySelector('.scroll-arrow-left');
+         const arrowRight = document.querySelector('.scroll-arrow-right');
+
+         arrowLeft.addEventListener('click', () => {
+            scrollList.scrollBy({
+               left: -scrollList.offsetWidth,
+               behavior: 'smooth'
+            });
+         });
+
+         arrowRight.addEventListener('click', () => {
+            scrollList.scrollBy({
+               left: scrollList.offsetWidth,
+               behavior: 'smooth'
+            });
+         });
+      });
+   </script>
+</body>
+
+</html>

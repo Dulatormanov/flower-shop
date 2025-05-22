@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Отзывы - Цветочный магазин</title>
+   <link rel="stylesheet" href="style.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <style>
+      /* Стили для секции отзывов */
+      #reviews {
+         padding: 40px 20px;
+         text-align: center;
+         max-width: 1200px;
+         margin: 0 auto;
+         background-color: rgba(255, 255, 255, 0.7);
+         border-radius: 10px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .reviews-container {
+         position: relative;
+         overflow: hidden;
+      }
+
+      .reviews-items {
+         display: flex;
+         overflow-x: auto;
+         scroll-snap-type: x mandatory;
+         padding-bottom: 20px;
+         margin-left: 20px;
+         margin-right: 20px;
+         scroll-behavior: smooth;
+         /* Добавляем плавную прокрутку */
+      }
+
+      .review-item {
+         width: 300px;
+         flex-shrink: 0;
+         margin: 20px;
+         padding: 20px;
+         background-color: rgba(255, 255, 255, 0.8);
+         border-radius: 10px;
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+         text-align: center;
+         scroll-snap-align: start;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+      }
+
+      .review-item img {
+         max-width: 100%;
+         height: auto;
+         border-radius: 10px;
+         margin-bottom: 15px;
+         object-fit: cover;
+      }
+
+      .reviews-scroll-button {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         background-color: rgba(0, 0, 0, 0.5);
+         color: #fff;
+         border: none;
+         padding: 10px;
+         border-radius: 5px;
+         cursor: pointer;
+         z-index: 10;
+      }
+
+      .reviews-scroll-left {
+         left: 10px;
+      }
+
+      .reviews-scroll-right {
+         right: 10px;
+      }
+   </style>
+</head>
+
+<body>
+
+   <header>
+      <nav>
+         <div class="logo">Desso_flowers</div>
+         <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            
+         </ul>
+      </nav>
+   </header>
+
+   <section id="reviews">
+      <h2>Отзывы</h2>
+      <div class="reviews-container">
+         <div class="reviews-items">
+            <!-- Здесь будут отзывы -->
+            <div class="review-item">
+               <img src="images/IMG_6622 3.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6613.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6621 3.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6625 2.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6626 4.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6623 2.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6616.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6617.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6619 2.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6620 2.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6611 2.jpg" alt="Фото пользователя">
+            </div>
+            <div class="review-item">
+               <img src="images/IMG_6618 2.jpg" alt="Фото пользователя">
+            </div>
+            <!-- Добавьте еще 14 отзывов -->
+         </div>
+         <button class="reviews-scroll-button reviews-scroll-left" onclick="scrollReviews(-350)"><i
+               class="fas fa-chevron-left"></i></button>
+         <button class="reviews-scroll-button reviews-scroll-right" onclick="scrollReviews(350)"><i
+               class="fas fa-chevron-right"></i></button>
+      </div>
+   </section>
+
+   <footer>
+      <p>&copy; 2025 Desso_flowers</p>
+   </footer>
+
+   <script>
+      function scrollReviews(amount) {
+         const reviewsContainer = document.querySelector('.reviews-items');
+         reviewsContainer.scrollBy({ left: amount, behavior: 'smooth' });
+      }
+   </script>
+
+</body>
+
+</html>

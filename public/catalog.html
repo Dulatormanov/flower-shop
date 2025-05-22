@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Цветочный магазин</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <header>
+      <nav>
+         <div class="logo">Desso_flowers</div>
+         <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+         </ul>
+      </nav>
+   </header>
+
+   <section id="catalog"> <!-- Исправлен id на catalog -->
+      <h2>Каталог</h2>
+      <h3>Отдельные цветы</h3>
+      <div id="flower-list">
+         <!-- Здесь будут динамически добавлены карточки цветов -->
+      </div>
+
+      <h3>Букеты</h3>
+      <div id="bouquet-list">
+         <!-- Здесь будут динамически добавлены карточки букетов -->
+      </div>
+   </section>
+
+   <footer>
+      <p>&copy; 2025 Desso_flowers </p>
+   </footer>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
+         // Функция для отображения цветов
+         function displayFlowers(flowers) {
+            const flowerList = document.getElementById('flower-list');
+            flowers.forEach(flower => {
+               const flowerDiv = document.createElement('div');
+               flowerDiv.classList.add('catalog-item');
+               flowerDiv.innerHTML = `
+                <img src="${flower.image_url}" alt="${flower.name}" width="200">
+                <h3>${flower.name} (${flower.color})</h3>
+                <p>Цена: ${flower.price} ₸</p>
+                <a href="https://wa.me/77001234567?text=Я хочу заказать ${flower.name} (${flower.color})" class="buy-button">Купить</a>
+            `;
+               flowerList.appendChild(flowerDiv);
+            });
+         }
+         // Функция для отображения букетов
+         function displayBouquets(bouquets) {
+            const bouquetList = document.getElementById('bouquet-list');
+            bouquets.forEach(bouquet => {
+               const bouquetDiv = document.createElement('div');
+               bouquetDiv.classList.add('catalog-item');
+               bouquetDiv.innerHTML = `
+            <img src="${bouquet.image_url}" alt="${bouquet.name}" width="200">
+            <h3>${bouquet.name}</h3>
+            <p>${bouquet.description}</p>
+            <p>Цена: ${bouquet.price} ₸</p>
+            <a href="https://wa.me/77001234567?text=Я хочу заказать ${bouquet.name}" class="buy-button">Купить</a>
+        `;
+               bouquetList.appendChild(bouquetDiv);
+            });
+         }
+
+         // Загрузка и отображение цветов
+         fetch('/flowers')
+            .then(response => response.json())
+            .then(flowers => displayFlowers(flowers))
+            .catch(error => console.error('Ошибка при загрузке цветов:', error));
+
+         // Загрузка и отображение букетов
+         fetch('/bouquets')
+            .then(response => response.json())
+            .then(bouquets => displayBouquets(bouquets))
+            .catch(error => console.error('Ошибка при загрузке букетов:', error));
+      });
+   </script>
+</body>
+
+</html>

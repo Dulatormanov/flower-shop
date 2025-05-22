@@ -1,0 +1,654 @@
+html {
+   scroll-behavior: smooth;
+}
+
+body {
+   font-family: sans-serif;
+   margin: 0;
+   padding: 0;
+   color: #333;
+   line-height: 1.6;
+   background-color: #E6E6FA;
+}
+
+/* ---------------- стили для разделов --------------------- */
+section {
+   padding: 60px 20px;
+   text-align: center;
+   max-width: 1200px;
+   margin: 0 auto;
+   background-color: rgba(255, 255, 255, 0.7);
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+   font-size: 2.5rem;
+   margin-bottom: 30px;
+   color: #673AB7;
+   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+p {
+   font-size: 1.2rem;
+   color: #555;
+   margin-bottom: 20px;
+}
+
+/* ---------------------Стили для шапки---------------- */
+header {
+   background-color: rgba(0, 0, 0, 0.1);
+   color: #673AB7;
+   padding: 1rem 0;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+   position: sticky;
+   top: 0;
+   z-index: 100;
+}
+
+nav {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 20px;
+   max-width: 1200px;
+   margin: 0 auto;
+}
+
+nav .logo {
+   font-size: 2rem;
+   font-weight: bold;
+   color: #673AB7;
+}
+
+nav ul {
+   list-style: none;
+   display: flex;
+   margin: 0;
+   padding: 0;
+}
+
+nav ul li {
+   margin-left: 20px;
+}
+
+nav ul li a {
+   color: #673AB7;
+   text-decoration: none;
+   font-size: 1.2rem;
+   transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+   color: #957DAD;
+}
+
+/* Стили для секции Hero */
+#hero {
+   position: relative;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 80px 20px;
+   border-radius: 10px;
+   color: white;
+   /* Задаем белый цвет для всего текста в секции hero */
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+   text-align: center;
+   height: 600px;
+}
+
+.hero-video {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 60%;
+   height: 60%;
+   object-fit: contain;
+   z-index: 0;
+}
+
+.hero-content {
+   position: relative;
+   z-index: 1;
+   text-align: left;
+   padding-left: 50px;
+   background-color: rgba(0, 0, 0, 0.3);
+   padding: 20px;
+   border-radius: 10px;
+}
+
+#hero .hero-content h1 {
+   font-family: 'Caveat', cursive;
+   font-size: 2.5em;
+   font-weight: normal;
+   color: white;
+}
+
+#hero .hero-content p {
+   font-family: 'Caveat', cursive;
+   font-size: 1.2em;
+   color: white !important;
+   /* Явно устанавливаем белый цвет для текста параграфа */
+}
+
+/* Стили для кнопки "Купить" */
+.buy-button {
+   display: inline-block;
+   padding: 10px 20px;
+   background-color: #673AB7;
+   color:  #FFFFFF !important;
+   text-decoration: none;
+   border-radius: 5px;
+   margin-top: 10px;
+   transition: background-color 0.3s ease;
+   font-family: 'Caveat', cursive;
+}
+
+.buy-button:hover {
+   background-color: #957DAD;
+}
+
+/* Стили для секции Featured */
+#featured .featured-items {
+   display: flex;
+   overflow-x: auto;
+   scroll-snap-type: x mandatory;
+   padding-bottom: 20px;
+   margin-left: 20px;
+   margin-right: 20px;
+}
+
+#featured .item {
+   width: 300px;
+   flex-shrink: 0;
+   margin: 20px;
+   padding: 20px;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 10px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+   text-align: center;
+   scroll-snap-align: start;
+}
+
+#featured .item:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+#featured .item img {
+   max-width: 100%;
+   height: auto;
+   border-radius: 10px;
+   margin-bottom: 15px;
+   object-fit: cover;
+}
+
+#featured .item h3 {
+   font-size: 1.5rem;
+   margin-bottom: 10px;
+   color: #444;
+}
+
+#featured .item p {
+   font-size: 1rem;
+   color: #666;
+}
+
+/* Стили для футера */
+footer {
+   background-color: rgba(0, 0, 0, 0.3);
+   color: #fff;
+   text-align: center;
+   padding: 20px 0;
+   font-size: 1rem;
+}
+
+/* Стили для "О нас" */
+#about {
+   background-color: rgba(255, 255, 255, 0.4);
+   border-radius: 10px;
+   padding: 40px 20px;
+   text-align: center;
+}
+
+.about-container {
+   max-width: 1200px;
+   margin: 0 auto;
+}
+
+.about-content {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+}
+
+.about-text {
+   flex: 1;
+   padding: 20px;
+   text-align: left;
+   min-width: 300px;
+}
+
+.about-text p {
+   font-size: 1.1rem;
+   line-height: 1.7;
+   margin-bottom: 15px;
+   color: #555;
+}
+
+.about-image {
+   flex: 1;
+   padding: 20px;
+   text-align: center;
+   min-width: 250px;
+}
+
+.about-image img {
+   width: 350px;
+   height: 400px;
+   object-fit: cover;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-image .image-caption {
+   font-size: 0.9rem;
+   color: #777;
+   margin-top: 10px;
+}
+
+/* Стили для адаптивности */
+@media (max-width: 768px) {
+   .about-content {
+      flex-direction: column;
+      text-align: center;
+   }
+
+   .about-text {
+      text-align: center;
+   }
+}
+
+/* Медиа запросы для адаптивности*/
+@media (max-width: 768px) {
+   #hero {
+      flex-direction: column;
+   }
+
+   #hero .hero-content {
+      width: 80%;
+      /*  Уменьшаем ширину контента на мобильных устройствах */
+      margin-bottom: 20px;
+   }
+
+   nav ul {
+      flex-direction: column;
+      text-align: center;
+   }
+
+   nav ul li {
+      margin: 10px 0;
+   }
+}
+
+/* Стили для раздела "Контакты" */
+#contact {
+   padding: 40px 20px;
+   text-align: center;
+   max-width: 1200px;
+   margin: 0 auto;
+   background-color: rgba(255, 255, 255, 0.7);
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+.contact-item {
+   margin-bottom: 20px;
+}
+
+.contact-item h3 {
+   font-size: 1.8rem;
+   color: #673AB7;
+   margin-bottom: 10px;
+   margin-left: -5px;
+   /* Добавляем отрицательный отступ слева 15px */
+   /* Регулируйте значение по своему вкусу */
+}
+
+.contact-item p {
+   font-size: 1.2rem;
+   color: #555;
+}
+
+/* Стили для социальных ссылок */
+.social-links {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 20px;
+}
+
+.social-links a {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin: 10px 0;
+   padding: 10px 20px;
+   font-size: 1.2em;
+   color: #fff;
+   text-decoration: none;
+   background-color: #673AB7;
+   border-radius: 5px;
+   transition: background-color 0.3s ease;
+   width: 200px;
+}
+
+.social-links a:hover {
+   background-color: #957DAD;
+}
+
+.social-links i {
+   margin-right: 10px;
+}
+
+/* Стили для адреса */
+.address-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin: 10px auto;
+   /* Автоматические отступы по бокам + верхний отступ */
+   padding: 10px 20px;
+   font-size: 1.2em;
+   color: #fff;
+   text-decoration: none;
+   background-color: #673AB7;
+   border-radius: 5px;
+   transition: background-color 0.3s ease;
+   width: auto;
+   /* Автоматическая ширина */
+   max-width: 200px;
+   /* Максимальная ширина */
+   text-align: center;
+   /* Центрируем текст */
+}
+
+.address-container:hover {
+   background-color: #957DAD;
+}
+
+.address-container i {
+   margin-right: 10px;
+}
+
+/* Стили для секции "Почему мы?" */
+#why-us {
+   background-color: #673AB7;
+   color: #fff;
+   padding: 40px 20px;
+   text-align: center;
+   margin-bottom: 40px;
+}
+
+/* Стили для секции отзывов */
+#reviews {
+   padding: 40px 20px;
+   text-align: center;
+   max-width: 1200px;
+   margin: 0 auto;
+   background-color: rgba(255, 255, 255, 0.7);
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-container {
+   position: relative;
+   overflow: hidden;
+}
+
+.reviews-items {
+   display: flex;
+   overflow-x: auto;
+   scroll-snap-type: x mandatory;
+   padding-bottom: 20px;
+   margin-left: 20px;
+   margin-right: 20px;
+}
+
+.review-item {
+   width: 400px;
+   /* Увеличиваем ширину ячейки */
+   height: 300px;
+   /* Увеличиваем высоту ячейки */
+   margin: 30px;
+   /* Увеличиваем отступы */
+   padding: 30px;
+   /* Увеличиваем поля */
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 10px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+   text-align: center;
+   scroll-snap-align: start;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.review-item img {
+   max-width: 100%;
+   height: auto;
+   border-radius: 10px;
+   margin-bottom: 15px;
+}
+
+.review-item p {
+   font-size: 1.1rem;
+   color: #555;
+   margin-bottom: 10px;
+   text-align: center;
+}
+
+.review-item .author {
+   font-style: italic;
+   color: #777;
+   text-align: center;
+}
+
+.reviews-scroll-button {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   background-color: rgba(0, 0, 0, 0.5);
+   color: #fff;
+   border: none;
+   padding: 10px;
+   border-radius: 5px;
+   cursor: pointer;
+   z-index: 10;
+}
+
+.reviews-scroll-left {
+   left: 10px;
+}
+
+.reviews-scroll-right {
+   right: 10px;
+}
+
+/* Общие стили для каталога */
+#catalog {
+   background-color: #f0e6ff;
+   /* Светло-фиолетовый фон */
+   padding: 20px;
+}
+
+#catalog h2 {
+   text-align: center;
+   color: #673AB7;
+   /* Темно-фиолетовый заголовок */
+   margin-bottom: 30px;
+}
+
+/* Контейнер для категорий (Авторские букеты, Монобукеты и т.д.) */
+.catalog-categories {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 20px;
+}
+
+.catalog-categories a {
+   display: inline-block;
+   padding: 10px 20px;
+   margin: 0 10px;
+   text-decoration: none;
+   color: #673AB7;
+   /* Темно-фиолетовый текст */
+   border: 1px solid #673AB7;
+   /* Темно-фиолетовая обводка */
+   border-radius: 20px;
+   transition: all 0.3s ease;
+}
+
+.catalog-categories a:hover {
+   background-color: #673AB7;
+   /* Темно-фиолетовый фон при наведении */
+   color: white;
+   /* Белый текст при наведении */
+}
+
+/* Контейнер для карточек товаров */
+#flower-list,
+#bouquet-list {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   /* Центрируем элементы в строке */
+}
+
+/* Стили для карточек товаров */
+.catalog-item {
+   background-color: #f9f5ff;
+   /* Светло-фиолетовый фон карточки */
+   border: 1px solid #ddd;
+   border-radius: 15px;
+   padding: 20px;
+   margin: 15px;
+   width: 300px;
+   /* Фиксированная ширина карточки */
+   text-align: center;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+   transition: transform 0.3s ease;
+}
+
+.catalog-item:hover {
+   transform: translateY(-5px);
+}
+
+.catalog-item img {
+   max-width: 100%;
+   height: 200px;
+   /* Фиксированная высота изображения */
+   object-fit: cover;
+   /* Обрезаем изображение для соответствия высоте */
+   border-radius: 10px;
+   margin-bottom: 15px;
+}
+
+.catalog-item h3 {
+   color: #555;
+   font-size: 1.3rem;
+   margin-bottom: 10px;
+}
+
+.catalog-item p {
+   color: #777;
+   margin-bottom: 20px;
+}
+
+.catalog-item .price {
+   font-weight: bold;
+   color: #673AB7;
+   /* Темно-фиолетовый цвет цены */
+   margin-bottom: 20px;
+}
+
+/* Стили для кнопки Купить */
+.buy-button {
+   display: inline-block;
+   padding: 12px 24px;
+   /* Увеличил padding, чтобы кнопка была больше */
+   background-color: #673AB7;
+   /* Фиолетовый цвет (#673AB7) */
+   color: #FFFFFF !important;
+   /* Белый цвет текста */
+   text-decoration: none;
+   border-radius: 8px;
+   /* Более скругленные углы */
+   margin-top: 10px;
+   transition: background-color 0.3s ease;
+   font-family: 'Caveat', cursive;
+   /* Опционально: если нужен конкретный шрифт */
+   font-size: 1.2em;
+   /* Опционально: размер шрифта */
+   border: none;
+   /* Убирает обводку */
+   cursor: pointer;
+   /* Меняет курсор при наведении */
+}
+
+.buy-button:hover {
+   background-color: #957DAD;
+   /* Немного другой оттенок фиолетового при наведении */
+}
+/* Кнопка "Смотреть еще" */
+.catalog-view-more {
+   text-align: center;
+   margin-top: 30px;
+}
+
+.catalog-view-more a {
+   display: inline-block;
+   padding: 10px 20px;
+   background-color: #f9f5ff;
+   /* Светло-фиолетовый фон */
+   color: #673AB7;
+   /* Темно-фиолетовый текст */
+   border: 1px solid #673AB7;
+   border-radius: 20px;
+   text-decoration: none;
+   transition: all 0.3s ease;
+}
+
+.catalog-view-more a:hover {
+   background-color: #673AB7;
+   /* Темно-фиолетовый фон при наведении */
+   color: white;
+   /* Белый текст при наведении */
+}
+
+/* Адаптивность для небольших экранов */
+@media (max-width: 768px) {
+
+   #flower-list,
+   #bouquet-list {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .catalog-item {
+      width: 80%;
+      /* Увеличиваем ширину на небольших экранах */
+   }
+}
