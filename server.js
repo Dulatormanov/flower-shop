@@ -9,7 +9,14 @@ const port = 3000;
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL || 'postgresql://postgres.inqxwptbhulianfgvpmo:dulatormanov2OO4@aws-0-eu-north-1.pooler.supabase.com:6543/postgres'
 });
+app.use(express.static(path.join(__dirname, 'public')));
+console.log('Static directory:', path.join(__dirname, 'public'));
 
+// Add this to check routes
+app.get('/', (req, res) => {
+  console.log('Root route accessed');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 app.use(express.static('public'));
 
 // Обработчик для корневого пути ('/')
