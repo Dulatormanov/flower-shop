@@ -7,11 +7,7 @@ const port = 3000;
 
 // Настройки подключения к базе данных
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'desso-flowers',
-    password: 'madina07',
-    port: 5432,
+    connectionString: process.env.DATABASE_URL || 'postgresql://postgres.inqxwptbhulianfgvpmo:dulatormanov2OO4@aws-0-eu-north-1.pooler.supabase.com:6543/postgres'
 });
 
 app.use(express.static('public'));
